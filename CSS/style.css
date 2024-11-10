@@ -1,0 +1,221 @@
+/* Define global CSS variables */
+:root {
+    --site-color: #ff9b04;
+    --site-color-hover: #e9a11d;
+}
+
+/* Basic page setup with responsive padding using clamp() */
+body {
+    background-color: #000000;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* Main container styles with responsive padding */
+.container {
+    color: #fff;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Grid container for cards with responsive gap spacing */
+.container-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pic-item {
+    background-color: #1d1d1d;
+    border-radius: 10px;
+    overflow: hidden;
+    width: calc(33.33% - 40px);
+    min-width: 300px;
+    position: relative;
+}
+
+.pic-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    padding-bottom: clamp(70px, 10vw, 100px); /* Responsive padding at bottom for profile image overlap */
+}
+
+/* Profile styles */
+.profile {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(100px, 15vw, 150px); /* Responsive width that scales between 100px and 150px */
+    height: clamp(100px, 15vw, 150px); /* Responsive height that scales between 100px and 150px */
+    border-radius: 50%;
+    border: 5px solid #1d1d1d;
+    overflow: hidden;
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pic-item:hover {
+    transform: scale(1.02);
+}
+
+.pic-item h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.pic-item p {
+    font-size: 1.0rem; 
+    text-align: center; 
+    margin-bottom: 10px;  
+    line-height: 1.4;
+}
+
+.pic-item a {
+    background-color: var(--site-color);
+    color: #000000;
+    padding: clamp(8px, 1.5vw, 10px) clamp(16px, 2.5vw, 20px);
+    border-radius: 20px;
+    text-decoration: none;   
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.pic-item a:hover {
+    background-color: var(--site-color-hover);
+}
+
+.text {
+    text-align: center;
+    padding: clamp(5px, 1.5vw, 10px) clamp(10px, 2vw, 20px);
+}
+
+/* Media Queries */
+/* For small screens (mobiles) */
+@media only screen and (max-width: 600px) {
+    .container-grid {
+        flex-wrap: column;
+        gap: 20px;
+    }
+
+    .pic-item {
+        width: min(calc(50% - 40px), 500px);
+    }
+
+    .profile {
+        top: 260px;
+        width: 130px; 
+        height: 130px; 
+    }
+
+    br {
+        display: none;
+    }
+
+    .pic-item h1, .pic-item p {
+        margin-top: 20px ;
+        margin-bottom: 20px;
+    }
+}
+
+/* For medium screens */
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+    .container-grid {
+        flex-direction: row; /* Switch to row layout */
+    }
+
+    .pic-item {
+        width: calc(50% - 40px);
+    }
+
+    .pic-item img {
+        padding-bottom: 80px;
+    }
+
+    .pic-item h1, .pic-item p {
+        margin-top: 20px ;
+        margin-bottom: 20px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+
+    .profile {
+        top: 260px;
+        width: 150px; 
+        height: 150px; 
+    }
+
+    br {
+        display: none;
+    }
+    
+}
+
+/* For larger screens */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .container-grid {
+        flex-direction: row; /* Switch to row layout */
+        gap: 20px;
+    } 
+
+    .pic-item {
+        width: calc(33.33% - 40px);
+    }
+    
+    .profile {
+        top: 260px;
+        width: 150px; 
+        height: 150px; 
+    }
+
+    .pic-item h1, .pic-item p {
+        margin-top: 20px ;
+        margin-bottom: 20px;
+    }
+    
+    br {
+        display: none;
+    }
+
+}
+
+/* For extra-large screens */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .container-grid {
+        gap: 20px;
+    }  
+
+    .pic-item {
+        width: calc(33.33% - 40px);
+    }
+    
+    .profile {
+        top: 280px;
+        width: 150px; 
+        height: 150px; 
+    }
+
+    .pic-item h1, .pic-item p {
+        margin-top: 20px ;
+        margin-bottom: 20px;
+    }
+  
+    br {
+        display: none;
+    }
+}
+
